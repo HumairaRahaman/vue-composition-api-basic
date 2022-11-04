@@ -6,11 +6,13 @@
     <h2>{{myTitle}}</h2>
 <h1>{{counterData.title}}:</h1>
     <div>
-      <button @click="dicreaseValue" class="btn">-</button>
+      <button @click="dicreaseValue(2)" class="btn">--</button>
+      <button @click="dicreaseValue(1)" class="btn">-</button>
       <button class="counter">{{counterData.count}}</button>
-      <button @click="increaseValue" class="btn">+</button>
+      <button @click="increaseValue(1)" class="btn">+</button>
+      <button @click="increaseValue(2)" class="btn">++</button>
     </div>
-
+<p>This is the {{computedValue}} number</p>
 
     <div class="edit">
       <h1>Edit the Title:</h1>
@@ -20,23 +22,31 @@
 </template>
 
 <script setup>
-import { reactive } from "vue"
+import { computed, reactive, watch } from "vue"
 
 const myTitle = 'My excilent Counter!'
 
-// const counter = ref(0),
-// counterTitle = ref('My Counter')
+const computedValue = computed(()=>{
+if(counterData.count % 2 === 0) return 'even'
+return 'odd'
+})
+
+
 
 const counterData = reactive({
   count: 0,
   title: 'My Counter'
 })
 
-    const increaseValue = () =>{
-      counterData.count++
+watch(()=> counterData.count,(newCount)=>{
+  if(counterData.count == 20)
+alert('This is pretty, you may go home now!!!')
+})
+    const increaseValue = amount =>{
+      counterData.count+= amount
     }
-    const dicreaseValue = () =>{
-      counterData.count--
+    const dicreaseValue = amount =>{
+      counterData.count-=amount
     }
 
 </script>
