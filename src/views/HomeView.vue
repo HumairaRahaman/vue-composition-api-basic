@@ -3,77 +3,44 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-
+    <h2>{{myTitle}}</h2>
+<h1>{{counterData.title}}:</h1>
     <div>
       <button @click="dicreaseValue" class="btn">-</button>
-      <button class="counter">{{counter}}</button>
+      <button class="counter">{{counterData.count}}</button>
       <button @click="increaseValue" class="btn">+</button>
+    </div>
+
+
+    <div class="edit">
+      <h1>Edit the Title:</h1>
+      <input v-model="counterData.title" type="text"/>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { reactive } from "vue"
 
-const counter = ref(0)
+const myTitle = 'My excilent Counter!'
+
+// const counter = ref(0),
+// counterTitle = ref('My Counter')
+
+const counterData = reactive({
+  count: 0,
+  title: 'My Counter'
+})
 
     const increaseValue = () =>{
-      counter.value ++
+      counterData.count++
     }
     const dicreaseValue = () =>{
-      counter.value--
+      counterData.count--
     }
 
 </script>
 
-<!----
-<script>
-import { ref } from "vue"
-export default ({
-  setup() {
-    const counter = ref(0)
-
-    const increaseValue = () =>{
-      counter.value ++
-    }
-    const dicreaseValue = () =>{
-      counter.value--
-    }
-
-
-    return{
-    counter,
-    increaseValue,
-    dicreaseValue
-  }
-  },
-
- 
-})
-</script>
-
---->
-<!-----
-<script>
-
-
-export default ({
-  data() {
-    return{
-      counter: 0,
-    }
-  },
-  methods:{
-increaseValue(){
-  this.counter ++
-},
-dicreaseValue(){
-  this.counter --
-}
-  }
-})
-</script>
----->
 
 <style >
 .home{
@@ -84,5 +51,8 @@ dicreaseValue(){
   font-size: 40px;
   margin: 10px;
 
+}
+.edit{
+  margin-top: 20px;
 }
 </style>
