@@ -25,7 +25,7 @@
 /* 
 import
 */
-import { computed, onMounted , reactive, ref, watch } from "vue"
+import { computed, onMounted , reactive, ref, watch , nextTick } from "vue"
 import {vAutofocus} from '@/Derictive/vAutofocus'
 
 
@@ -58,8 +58,10 @@ watch(()=> counterData.count,(newCount)=>{
   if(counterData.count == 20)
 alert('This is pretty, you may go home now!!!')
 })
-    const increaseValue = amount =>{
+    const increaseValue = async amount =>{
       counterData.count+= amount
+      await nextTick()
+      console.log('do something when counter is update in the dom');
     }
     const dicreaseValue = amount =>{
       counterData.count-=amount
