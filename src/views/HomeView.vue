@@ -22,8 +22,17 @@
 </template>
 
 <script setup>
-import { computed, reactive, watch } from "vue"
+/* 
+import
+*/
+import { computed, onMounted , reactive, watch } from "vue"
 
+onMounted(()=>{
+  console.log('on mounted for before');
+})
+/*
+title
+*/
 const myTitle = 'My excilent Counter!'
 
 const computedValue = computed(()=>{
@@ -32,7 +41,9 @@ return 'odd'
 })
 
 
-
+/**
+ * counter
+ */
 const counterData = reactive({
   count: 0,
   title: 'My Counter'
@@ -48,6 +59,33 @@ alert('This is pretty, you may go home now!!!')
     const dicreaseValue = amount =>{
       counterData.count-=amount
     }
+
+    // onBeforeMount(()=>{
+    //   console.log('befmount');
+    // })
+    // onMounted(()=>{
+    //   console.log('mount');
+    // })
+    // onBeforeUnmount(()=>{
+    //   console.log('brfunmou');
+    // })
+    // onUnmounted(()=>{
+    //   console.log('unmount');
+    // })
+    // onActivated(()=>{
+    //   console.log('active');
+    // })
+    // onDeactivated(()=>{
+    //   console.log('deactive');
+    // })
+
+    // onUpdated(()=>{
+    //   console.log('updated');
+    // })
+    // onBeforeUpdate(()=>{
+    //   console.log('onBefUp');
+    // }
+    // )
 
 </script>
 
