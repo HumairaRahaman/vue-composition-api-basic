@@ -3,7 +3,7 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <h2>{{myTitle}}</h2>
+    <h2 ref="appmyTitleRef">{{myTitle}}</h2>
 <h1>{{counterData.title}}:</h1>
     <div>
       <button @click="dicreaseValue(2)" class="btn">--</button>
@@ -25,16 +25,20 @@
 /* 
 import
 */
-import { computed, onMounted , reactive, watch } from "vue"
+import { computed, onMounted , reactive, ref, watch } from "vue"
 import {vAutofocus} from '@/Derictive/vAutofocus'
 
-onMounted(()=>{
-  console.log('on mounted for before');
-})
+
 /*
 title
 */
 const myTitle = 'My excilent Counter!'
+
+const appmyTitleRef = ref(null)
+
+onMounted(()=>{
+  console.log(`My Title with is:${appmyTitleRef.value.offsetWidth} px With!`);
+})
 
 const computedValue = computed(()=>{
 if(counterData.count % 2 === 0) return 'even'
