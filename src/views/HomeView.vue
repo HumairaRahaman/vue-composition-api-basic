@@ -16,7 +16,7 @@
 
     <div class="edit">
       <h1>Edit the Title:</h1>
-      <input v-model="counterData.title" type="text"/>
+      <input v-model="counterData.title" type="text" v-autofocus/>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@
 import
 */
 import { computed, onMounted , reactive, watch } from "vue"
+import {vAutofocus} from '@/Derictive/vAutofocus'
 
 onMounted(()=>{
   console.log('on mounted for before');
@@ -59,6 +60,16 @@ alert('This is pretty, you may go home now!!!')
     const dicreaseValue = amount =>{
       counterData.count-=amount
     }
+
+    /**
+     * derictive
+     */
+// const vAutofocus = {
+//   mounted: (el) =>{
+//  el.focus()
+//   }
+// }
+
 
     // onBeforeMount(()=>{
     //   console.log('befmount');
